@@ -16,7 +16,7 @@ if __name__ == "__main__":
     arg.add_argument('--dataset_path', type=str, default='dataset/train', help='Dataset path.')
     args = arg.parse_args()
     
-    scenearios = os.listdir(args.dataset_path)
+    scenarios = os.listdir(args.dataset_path)
     
     data_autoencoder = {
         "frame_ant": [],
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         "optical_flow": []
     }
             
-    for i, sceneario in enumerate(scenearios):
+    for i, sceneario in enumerate(scenarios):
         
         images_path = os.path.join(args.dataset_path, sceneario, "image_left")
         images_names = os.listdir(images_path)
@@ -41,3 +41,4 @@ if __name__ == "__main__":
     # Save data in json file
     with open("dataset_autoencoder.json", "w") as fp:
         json.dump(data_autoencoder, fp, indent=4)
+
